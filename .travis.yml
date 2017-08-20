@@ -1,5 +1,13 @@
 sudo: false
 language: ruby
 rvm:
-  - 2.4.1
+- 2.4.1
 before_install: gem install bundler -v 1.15.3
+deploy:
+  provider: rubygems
+  api_key:
+    secure: qu+7jQH94x3GAXIQaNu0Hp1kcd8dq1a7C8rE//LT/eoE2DKFL5MdtAEltA2gOrTe2wceFO4GtFsRFZvLlOfFYdEzSAMc0gGF5bJMbd/Uetd+As3+Ip2TwcJdT7tVhKz2LsbB5wcN6VIf1qNOcB/sjSAvFvau5TtFW5vqpi6T9oRmtBMRLtsR6AbihRPK0usx2pVtr1zyam5MMIISwCPmeql6r4/PpBsJMXTfJdvOqWORor62S7eCUbkbr5YNx/35JZAY8zVcv9745itYLO0p3izQK+u4XlpHe7n1Qnbyq4cQySrJsZVTNX5hK4xiZHlLSvolrK0i4/V6r7ha6r+JCFayJW6shl//+ITE6i1PmoCXitxbI445fqHbS5BJZyx+Lo3s4tCM9sYbpNft9EvgeH2q8AfTLy2itMs8hcgTYAMOImG/B7pk+toi6Zh0R8exS1u+jbWc0F1KdWD9zAm7kmfOeu9tMdmr0h8tkUfNST8BvF14I5bzLCUvZaSIXDnku1BrphfoWVw+2ChAnATjF8iM7Z31q6VGU0qeOVyadlg8OkywPHvYhTKClJ0TiBQtxN3WMQvSIo5ZeFfKI+bzShV/3dQMfr6ASkZcibD4kDTXx52pXJx2MUFTHubk6DduJHYU5CFve9ArciI0mLrQyFDqn+iOxBD0gG5KSBmWHBU=
+  gem: optio
+  on:
+    tags: true
+    repo: amitizle/optio

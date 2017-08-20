@@ -1,3 +1,10 @@
 #!/usr/bin/env ruby
 
+require "bundler/setup"
 require "optio"
+
+p = Optio::Parser.new do |parser|
+  parser.switch :iko
+end
+
+puts p.parse.inspect
