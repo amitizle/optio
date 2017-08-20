@@ -1,11 +1,13 @@
 # Optio
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/optio`. To experiment with that code, run `bin/console` for an interactive prompt.
+A simple wrapper for Ruby's [OptionParser](https://ruby-doc.org/stdlib-2.4.1/libdoc/optparse/rdoc/OptionParser.html).
+The aim of this library is to be able to use the powerful _OptionParser_ for it's most basic use, with an simpler
+setup.
+For things that are a bit more complicated than the very basic usage of options parsing for CLI tools, it's
+probably better to use Ruby's _OptionParser_.
 
 
 ## Installation
-
-Add this line to your application's Gemfile:
 
 ```ruby
 gem 'optio'
@@ -19,9 +21,24 @@ Or install it yourself as:
 
     $ gem install optio
 
+**Or**, install via [Rubygems](https://rubygems.org);
+
+```
+$ gem install optio
+```
 ## Usage
 
-Write usage instructions here
+The goal is to make the usage somehow similar to the _OptionParser_ one;
+
+```ruby
+require 'optio'
+
+parsed = Optio::Parser.new do |parser|
+  parser.switch :verbose, desc: "Verbose!", short: 'v', type: TrueClass
+end.parse!
+```
+
+Where the types are the same ones that are specified [in here](https://ruby-doc.org/stdlib-2.4.1/libdoc/optparse/rdoc/OptionParser.html#class-OptionParser-label-Type+Coercion).
 
 ## Development
 
