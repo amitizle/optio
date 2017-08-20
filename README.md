@@ -1,3 +1,6 @@
+  * [![Build Status](https://travis-ci.org/amitizle/optio.svg?branch=master)](https://travis-ci.org/amitizle/optio)
+  * [![Gem Version](https://badge.fury.io/rb/optio.svg)](https://badge.fury.io/rb/optio)
+
 # Optio
 
 A simple wrapper for Ruby's [OptionParser](https://ruby-doc.org/stdlib-2.4.1/libdoc/optparse/rdoc/OptionParser.html).
