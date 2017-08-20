@@ -1,4 +1,5 @@
 require 'optparse'
+require 'optio/switch'
 
 module Optio
   # A wrapper class for Ruby's {OptionParser}[https://ruby-doc.org/stdlib-2.4.1/libdoc/optparse/rdoc/OptionParser.html]
@@ -17,6 +18,8 @@ module Optio
   #   Optio::Parser.new do |parser|
   #     parser.subcommand :dance
   #   end
+  #
+  # TODO expose the option to auto assign short switch
   class Parser
     def initialize(&block)
       @switches = {}
@@ -40,7 +43,8 @@ module Optio
     #   * +:type+ - Expected argument type, {see OptionParser for details}[https://ruby-doc.org/stdlib-2.4.1/libdoc/optparse/rdoc/OptionParser.html#class-OptionParser-label-Type+Coercion]
     #   * +:short:+ - The short switch, i,e +-h+ for +--help+
     def switch(switch_name, opts = {})
-      store_parameter(switch_name, opts, @switches)
+      switch_obj = Switch.new(switch_name, opts)
+      store_parameter(switch_name, switch_obj, @switches)
     end
 
     # TODO support sub commands
@@ -74,9 +78,10 @@ module Optio
 
     def rb_parser(parsed_params)
       OptionParser.new do |rb_parser|
-        @switches.each do |switch, opts|
-          rb_parser.on("#{switch.to_s.chars.first} IKO", "--#{switch} IKO", opts[:type], opts[:desc]) do |param|
-            parsed_params[switch] = param
+        @switches.each do |switch_name, switch_obj|
+          rb_parser.banner = @banner if @banner
+          rb_parser.on(*(switch_obj.rb_parser_args)) do |param|
+            parsed_params[switch_name] = param
           end
         end
       end

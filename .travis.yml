@@ -11,3 +11,4 @@ deploy:
   on:
     tags: true
     repo: amitizle/optio
+    branch: master
